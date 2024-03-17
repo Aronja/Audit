@@ -17,18 +17,17 @@ scoonie_oct = oct.loc[oct['GPPractice'] == PRACTICE]
 hb_june = june.loc[june['HBT'] == HEALTH_BOARD]
 hb_oct = oct.loc[oct['HBT'] == HEALTH_BOARD]
 
-
 def find_relevant_drugs(df):
     '''finds the relevant drugs for a given dataframe'''
     filtered_df = df.loc[
-(df['BNFItemCode'] == '1306010Z0BBAAAA') # Epiduo 0.1% 
+(df['BNFItemCode'] == '1306010Z0BBAAAA') # Epiduo 0.1%
 | (df['BNFItemCode'] == '1306010Z0BBABAB') # Epiduo 0.3%
 | (df['BNFItemCode'] == '1306010H0AAABAB') # Adapalene Cream
-| (df['BNFItemCode'] == '1306010H0AAAAAA')] # Adapalene Gel
-    
-    return filtered_df.drop(columns=['PrescribedType', 'GrossIngredientCost', 'PaidDateMonth', 'PaidQuantity', 
-                                     'BNFItemCode', 'GPPractice'])
-
+| (df['BNFItemCode'] == '1306010H0AAAAAA') # Adapalene Gel
+| (df['BNFItemCode'] == '1306010H0BBABAB') # Differin 0.1% Cream
+| (df['BNFItemCode'] == '1306010I0BFAAAF') # Aknemycin plus
+| (df['BNFItemCode'] == '1306010ABBBAAAA') # Treclin 1%/0.0.25%
+| (df['BNFItemCode'] == '1306010ABAAAAAA')] # Clindamycin 1% /Tretinoin 0.025% Cream
 
 def print_data(df, month, comparison):
     print('prescribed in ' + month + ' in ' + comparison)
